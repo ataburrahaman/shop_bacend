@@ -9,7 +9,6 @@ var userLoginSchema = mongoose.Schema({
             require:true
              },
    email: String,
-   address:{},
    isEmailVerified:{
         type:Boolean,
         default: false

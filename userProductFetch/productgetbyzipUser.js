@@ -8,8 +8,9 @@ exports.view = async (req, res)=> {
         $and:[
             { zipCode: req.params.zipcode},
             {
-                "productDetails.category" : catagor}
-    ]})
+                "productDetails.category" : catagor
+            }
+             ]})
      .then(product => {
          if(!product) {
              return res.status(404).send({

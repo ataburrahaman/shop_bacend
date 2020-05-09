@@ -8,7 +8,7 @@ exports.getuser =  async (req, res)=> {
         });
     }
 
-    await userModer.find({uid: userid})
+    await userModer.find({uid: userid},{_id:0,createdAt:0,updatedAt:0})
     .then(userdata => {
         res.json({
             status: "success",

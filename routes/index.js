@@ -18,6 +18,12 @@ var globalDatafetch = require('../globalData/index')
 
 var userLogin  = require('../userLogin/index')
 
+var deliveryData = require('../deliveryDate/index')
+
+var userAddressData =require ('../userAddress/index');
+
+var userOrderDetails =require ('../orderDetails/index')
+
 
 // Contact routes
 /* router.use('/contacts',
@@ -38,14 +44,22 @@ router.use('/global',
 globalDatafetch
 )
 
+router.use('/deliverydata',
+deliveryData
+)
 
 router.use('/userlogin/v1',
 userLogin
 )
+router.use('/useraddress',
+userAddressData
+)
+
+router.use('/order',
+userOrderDetails
+)
 
 
-
-    
 
 
 // Export API routes

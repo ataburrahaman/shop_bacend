@@ -24,6 +24,11 @@ var productbyZipSchema = mongoose.Schema({
             type: String,
             required: true
         },
+        isAvalable:{
+            type:Boolean,
+            default: true,
+            required: true
+        }
   
 },
 {

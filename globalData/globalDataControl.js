@@ -1,10 +1,12 @@
 var GlobalDataModel = require('./globalDataModel')
 
 exports.view =  async (req, res)=> {
+    var item =req.query.item;
     
+    if(item=="bestSelingItem"){
     await GlobalDataModel.find(
         {modelid: 1},
-        {bestSelingItem:1,todayTreding:1,_id: 0,updatedAt:1 }
+        {todayTreding:0,_id: 0,modelid:0,createdAt:0 }
         )
     .then(products => {
         res.json({
@@ -19,6 +21,29 @@ exports.view =  async (req, res)=> {
             message: err.message || "Some error occurred while retrieving Products."
         });
     });
+}else if(item=="todayTreding"){
+    await GlobalDataModel.find(
+        {modelid: 1},
+        {bestSelingItem:0,_id: 0,modelid:0,createdAt:0}
+        )
+    .then(products => {
+        res.json({
+            status: "success",
+            message: "Products retrieved successfully",
+            data: products
+        });
+        
+    }).catch(err => {
+        res.status(500).send({
+            status: "error",
+            message: err.message || "Some error occurred while retrieving Products."
+        });
+    });
+}else{
+    return res.status(400).send({
+        message: "Please Select todayTreding/bestSelingItem !"
+    });
+}
     
 };
 

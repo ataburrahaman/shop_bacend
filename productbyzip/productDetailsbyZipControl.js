@@ -45,6 +45,7 @@ Products =require('../product/productModel');
       offer:offer,
       weight:weight
     })
+    
   
     var product= await Products.find({ "productid": req.body.productid});
    

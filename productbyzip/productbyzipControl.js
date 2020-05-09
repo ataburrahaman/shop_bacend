@@ -5,7 +5,9 @@ ProductDetailsbyZip= require('../model/productDetailsbyZip');
 
 // Handle index actions
 exports.index =  async (req, res)=> {
-    await ProductbyZip.find()
+    await ProductbyZip
+    .find()
+    
     .then(productsbyZip => {
         res.json({
             status: "success",

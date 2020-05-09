@@ -29,6 +29,7 @@ router.route('/products/admin') //admin side
     .post(productDetailsbyZipControl.newproduct)
     .patch(productDetailsbyZipControl.update)
     .put(productDetailsbyZipControl.update);
+    
 router.route('/products/admin/delete/:delprodid') 
     .delete(productDetailsbyZipControl.delete);
 
