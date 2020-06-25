@@ -26,6 +26,8 @@ const options = {
   family: 4 // Use IPv4, skip trying IPv6
 };
 //Hare are the conflite
+//we add some more conflict
+
 // Connect to Mongoose and set connection variable
 try {
   mongoose.connect(uri, options);
