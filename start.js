@@ -14,9 +14,27 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+let uri ="mongodb://127.0.0.1:27017/groceryshop"
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    autoIndex: false, // Don't build indexes
+    poolSize: 10, // Maintain up to 10 socket connections
+    serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+    family: 4 // Use IPv4, skip trying IPv6
+  };
+
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/groceryshop', { useNewUrlParser: true});
-var db = mongoose.connection;
+try {
+    mongoose.connect(uri, options);
+  //  mongoose.connect('', { useNewUrlParser: true});
+} catch (error) {
+    handleError(error);
+  }
+    var db = mongoose.connection;
 
 // Added check for DB connection
 if(!db)
